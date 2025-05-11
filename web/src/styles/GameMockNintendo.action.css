@@ -1,0 +1,49 @@
+/*
+Minimal
+action
+styles
+*/
+
+/* Action panel container */
+.action-panel {
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: transparent;
+}
+
+/* Action grid (contains left and right controls) */
+.action-grid {
+  display: flex;
+  gap: 15px;
+}
+
+/* Left and right control columns */
+.left-controls, .right-controls {
+  flex: 1;
+}
+
+/* D-pad container */
+.nintendo-controls-wrapper {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+/* D-pad grid layout */
+.dpad-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* Button styling */
+.cooperate-button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.defect-button {
+  background-color: #F44336;
+  color: white;
+}
