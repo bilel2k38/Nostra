@@ -1,9 +1,7 @@
 /*
-  This CSS file is maintained for backward compatibility.
-  It simply imports the new PrisonersDilemmaGame.css file.
+Core functional CSS - No decorative styling
 */
-
-@import './PrisonersDilemmaGame.css';
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 /* Enhanced retro styles */
 body, html {
@@ -39,7 +37,7 @@ body, html {
 .game-container {
   width: 100%;
   max-width: 1000px;
-  min-height: 85vh;
+  height: 800px; /* Increased height from 700px to 800px */
   margin: 0; /* Centered by #root */
   padding: 20px;
   position: relative;
@@ -50,7 +48,6 @@ body, html {
   border: 2px solid #e0e0e0;
   display: flex;
   flex-direction: column;
-  max-height: 95vh; /* Ensure it doesn't exceed viewport height with padding */
   overflow: hidden; /* Prevent game-container itself from scrolling, internal parts will */
 }
 
@@ -146,6 +143,7 @@ body, html {
   padding: 0;
   flex-grow: 1;
   overflow: hidden;
+  height: calc(100% - 60px); /* Subtract header height */
 }
 
 @media (min-width: 768px) {
@@ -183,55 +181,61 @@ body, html {
 }
 
 .controls-history-column {
-  gap: 15px; /* Gap between action-panel and game-log-box */
-}
-
-/* D-pad and controls layout */
-.action-panel {
-  padding: 10px;
-  min-height: 150px; /* Ensure it has a minimum size */
-  box-sizing: border-box;
   display: flex;
-  width: 100%;
-  background-color: #252525;
-  border-radius: 8px;
-  border: 2px solid #444;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  flex-direction: column;
+  gap: 0; /* Remove additional gap since we added it to controls-area */
+  height: 100%; /* Take full height */
+  overflow: hidden; /* Prevent scrolling issues */
 }
 
-/* Action grid (contains left and right controls) */
+.controls-area {
+  height: 100%; /* Take full height of the column */
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  gap: 15px; /* Add space between action grid and game log */
+}
+
 .action-grid {
-  display: flex;
-  width: 100%;
-  gap: 5px;
-  height: 100%;
+  height: 130px; /* Reduced height to match smaller buttons */
+  display: grid;
+  grid-template-columns: 40% 60%;
+  gap: 15px; /* Increased gap between columns */
+  margin-bottom: 15px;
   box-sizing: border-box;
 }
 
-/* Left controls - 40% width */
-.left-controls {
-  flex: 0.4;
-  width: 40%;
+.action-grid-cell {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  height: 100%;
-  padding-right: 0;
+  justify-content: flex-start;
 }
 
-/* Right controls - 60% width */
-.right-controls {
-  flex: 0.6;
-  width: 60%;
+.action-button-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 5px;
   height: 100%;
-  padding-left: 0;
+  gap: 10px; /* Add gap between buttons */
 }
 
-/* Nintendo controller wrapper */
 .nintendo-controls-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  box-sizing: border-box;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Remove nintendo naming from CSS class to match new file naming */
+.controls-wrapper {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -250,50 +254,41 @@ body, html {
   gap: 10px;
   width: 100%;
   margin-bottom: 10px;
-  height: 75%;
+  height: 80px; /* Reduced height */
 }
 
 .cooperate-button, .defect-button {
   width: 100% !important;
   height: 100% !important;
   box-sizing: border-box;
-  font-size: 10px;
-  padding: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
-}
-
-/* Force text centering regardless of content length */
-.cooperate-button span, .defect-button span {
-  display: inline-block;
-  white-space: nowrap;
-  text-align: center;
-  width: auto;
-}
-
-/* Enhanced retro button styles */
-.control-btn {
-  min-height: 40px;
-  padding: 5px 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border: 3px solid #888;
-  border-radius: 3px;
+  border: 3px solid;
+  font-family: inherit;
+  font-size: 12px; /* Slightly larger font */
+  font-weight: bold;
   cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.3), 0 3px 0 rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px; /* Improve readability */
+}
+
+.control-btn {
+  border: 3px solid;
   font-family: inherit;
   font-size: 10px;
-  width: 100%;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.3), 0 4px 0 rgba(0, 0, 0, 0.3);
-  transition: all 0.1s ease;
-  position: relative;
-  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.3), 0 3px 0 rgba(0, 0, 0, 0.3);
 }
 
 .control-btn:active {
@@ -309,18 +304,21 @@ body, html {
 /* Button colors */
 .rules-button {
   background-color: #FFC107;
-  height: 25%;
+  height: 40px; /* Reduced height */
   border-color: #d4a000;
   color: #000000;
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.4);
+  /* Remove margin as we're using gap */
 }
 
 .stake-button {
   background-color: #2196F3;
   color: #ffffff;
-  height: 75%;
+  flex-grow: 1; /* Take remaining space */
   border-color: #0c7cd5;
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+  height: auto; /* Allow natural height */
+  min-height: 80px; /* Ensure minimum height */
 }
 
 .cooperate-button {
@@ -334,6 +332,14 @@ body, html {
   overflow: hidden;
 }
 
+.cooperate-button.selected {
+  background-color: #2E7D32; /* Darker green */
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  transform: scale(0.98);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 .defect-button {
   background-color: #F44336;
   color: #ffffff;
@@ -345,14 +351,23 @@ body, html {
   overflow: hidden;
 }
 
+.defect-button.selected {
+  background-color: #C62828; /* Darker red */
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  transform: scale(0.98);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 .action-button.main-action {
   background-color: #673AB7;
   color: #ffffff;
-  height: 25%;
+  height: 50px; /* Fixed height */
   border-color: #512da8;
   font-weight: bold;
   position: relative;
   overflow: hidden;
+  margin-top: 5px;
 }
 
 /* Screen containers */
@@ -373,6 +388,7 @@ body, html {
   flex-grow: 1; /* Allow it to take available space in the column */
   min-height: 0; /* Fix for flex children overflowing parent */
   overflow: hidden; /* Children will scroll */
+  height: 450px; /* Increased height from 350px to 450px */
 }
 
 .game-log-box > h3 { /* Common title for the log box */
@@ -425,11 +441,11 @@ body, html {
   padding-bottom: 6px;
 }
 
-/* Table styles (mostly unchanged, but ensure they work in new context) */
+/* Table styles - removed scrollbars to show full history */
 .history-log-section .table-container {
-  max-height: 250px; /* Adjusted max height */
-  overflow-y: auto;
-  scroll-behavior: smooth;
+  height: auto; /* Auto height to fit all content */
+  max-height: none; /* Remove max height to prevent scrolling */
+  overflow-y: visible; /* Show all content without scrollbars */
   border: 1px solid #cccccc;
   border-radius: 3px;
   background-color: rgba(0,0,0,0.05); /* Very light background to differentiate */
@@ -455,6 +471,20 @@ th {
   position: sticky;
   top: 0;
   z-index: 1;
+}
+
+.positive {
+  color: #000000;
+  font-weight: bold;
+}
+
+.negative {
+  color: #000000;
+  font-weight: bold;
+}
+
+.neutral {
+  color: #000000;
 }
 
 .game-over-results {

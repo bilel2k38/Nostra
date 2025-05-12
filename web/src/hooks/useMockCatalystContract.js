@@ -65,7 +65,8 @@ export const useMockCatalystContract = () => {
         currentMove: null
       };
       
-      // Check if game is over (5 rounds)
+      // Mark game as over when 5 rounds have been COMPLETED
+      // This ensures the player can select and submit their move on the final round
       if (updatedGame.round >= 5) {
         updatedGame.state = 2; // Game over
       }

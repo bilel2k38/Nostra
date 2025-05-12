@@ -1,15 +1,9 @@
 /*
-Minimal
-action
-styles
+  This CSS file is maintained for backward compatibility.
+  It simply imports the new PrisonersDilemmaGame.action.css file.
 */
 
-/* Action panel container */
-.action-panel {
-  padding: 15px;
-  margin-bottom: 20px;
-  background-color: transparent;
-}
+@import './PrisonersDilemmaGame.action.css';
 
 /* Action grid (contains left and right controls) */
 .action-grid {

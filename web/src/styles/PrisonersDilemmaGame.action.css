@@ -1,0 +1,95 @@
+/* Action styles for Prisoner's Dilemma Game */
+
+.action-button {
+  width: 100%;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 3px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.3), 0 3px 0 rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.action-button:active {
+  transform: translateY(2px);
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.3), 0 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.action-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Animated effects */
+.action-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.action-button:hover::after {
+  transform: translateX(100%);
+}
+
+/* Specific button styling */
+.action-button.cooperate {
+  background-color: #4CAF50;
+  border-color: #3d8b40;
+  color: white;
+}
+
+.action-button.defect {
+  background-color: #F44336;
+  border-color: #ea1c0d;
+  color: white;
+}
+
+.action-button.submit {
+  background-color: #673AB7;
+  border-color: #512da8;
+  color: white;
+}
+
+.action-button.rules {
+  background-color: #FFC107;
+  border-color: #d4a000;
+  color: black;
+}
+
+.action-button.stake {
+  background-color: #2196F3;
+  border-color: #0c7cd5;
+  color: white;
+}
+
+/* Active state styling */
+.action-button.active {
+  border-width: 4px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .action-button {
+    font-size: 9px;
+    padding: 5px;
+  }
+}

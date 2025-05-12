@@ -1,0 +1,234 @@
+/* Chat styles - Simple and functional */
+
+/* Chat container */
+.chat-box {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #f0f0f0; /* Neutral background */
+  border-radius: 10px;
+  border: 2px solid #cccccc; /* Neutral border */
+  padding: 10px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+/* Chat header */
+.chat-box h3 {
+  text-align: center;
+  margin-top: 0;
+  padding: 10px 0;
+  background-color: #8c5dc8; /* Light purple background */
+  border-bottom: 2px solid #673ab7;
+  color: white;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Messages area */
+.chat-messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-right: 5px;
+  margin-bottom: 40px; /* Increased to make room for the input form */
+  height: 500px; /* Increased height from 400px to 500px */
+  scrollbar-width: thin;
+  scrollbar-color: #aaaaaa #f0f0f0;
+}
+
+.chat-messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background-color: #aaaaaa;
+  border-radius: 10px;
+  border: 2px solid #f0f0f0;
+}
+
+/* Individual message styling */
+.chat-message {
+  margin-bottom: 8px;
+  display: flex;
+}
+
+.chat-message.ai {
+  justify-content: flex-start;
+}
+
+.chat-message.player {
+  justify-content: flex-end;
+}
+
+.message-bubble {
+  padding: 6px 10px;
+  border-radius: 4px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.message-sender {
+  color: #8c5dc8;
+  font-weight: bold;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 5px;
+  max-width: 85%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  font-size: 9px;
+  line-height: 1.4;
+  box-sizing: border-box;
+}
+
+.message-text {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-break: break-word;
+  padding: 6px 10px;
+  border-radius: 10px;
+  margin-bottom: 4px;
+}
+
+.typing-animation {
+  display: inline-block;
+  position: relative;
+}
+
+.typing-animation::after {
+  content: '|';
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Special styling for rules text */
+.message-text pre {
+  white-space: pre-wrap;
+  font-family: inherit;
+  margin: 5px 0;
+  line-height: 1.5;
+}
+
+.message-text ul {
+  margin: 5px 0 5px 15px;
+  padding-left: 10px;
+}
+
+.message-text li {
+  margin-bottom: 5px;
+}
+
+.message-text h4 {
+  margin: 10px 0 5px 0;
+  color: #f9c80e;
+}
+
+.message-text .highlight {
+  color: #f9c80e;
+  font-weight: bold;
+}
+
+.chat-message.ai .message-bubble {
+  background-color: #f5f5f5;
+  color: #000000;
+  border: 1px solid #e0e0e0;
+}
+
+/* Typing animation for MrsBeauty */
+.typing-animation {
+  display: inline-block;
+  overflow: hidden;
+  white-space: pre-wrap;
+  border-right: 2px solid #8c5dc8;
+  width: fit-content;
+  animation: typing-cursor 0.7s step-end infinite;
+  word-break: break-word;
+}
+
+@keyframes typing-cursor {
+  from, to { border-color: #8c5dc8; }
+  50% { border-color: transparent; }
+}
+
+/* Typing animation styles */
+
+.chat-message.player .message-bubble {
+  background-color: #e8e8e8;
+  color: #000000;
+  border: 1px solid #d5d5d5;
+}
+
+/* Chat input area */
+.chat-input-form {
+  display: flex;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #e5e5e5;
+  border-top: 1px solid #cccccc;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.chat-input {
+  flex-grow: 1;
+  padding: 5px 10px;
+  border: 2px solid #9e9e9e;
+  background-color: #ffffff;
+  color: #333333;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 11px;
+}
+
+.chat-input:focus {
+  border-color: #4eca30;
+  box-shadow: 0 0 0 2px rgba(78, 202, 48, 0.3);
+}
+
+.send-button {
+  background-color: #4CAF50;
+  color: white;
+  border: 2px solid #3d8b40;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.3), 0 2px 0 rgba(0, 0, 0, 0.2);
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+  min-width: 60px;
+  transition: all 0.1s ease;
+}
+
+.send-button:active {
+  transform: translateY(2px);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.3), 0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.status-text {
+  font-size: 12px;
+  color: #000000;
+}
