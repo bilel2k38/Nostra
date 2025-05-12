@@ -1,136 +1,69 @@
-# Catalyst Prisoner's Dilemma Game
+## 1. Introduction
 
-A prototype implementation of the Catalyst Prisoner's Dilemma game with a mock version for local testing and a Web3-enabled version for blockchain interactions.
+Welcome to the Proof of Concept for **Nostra Labs Catalyst**.
 
-## Project Structure
+Nostra Labs is building a novel behavioral intelligence platform for the Web3 ecosystem. By fusing adaptive AI agents with engaging strategy games based on established game theory, we create dynamic 'living laboratories'. These environments generate unique, large-scale data on human decision-making under real incentives – data currently missing but crucial for the next stage of decentralized development. Our insights directly fuel Decentralized Science (DeSci) research and empower developers to build more resilient, empirically-validated dApps, protocols, and economies.
 
-- `/web` - React-based web implementation of the game
-  - `/src` - Source code for the web application
-    - `/components` - React components including the game implementation
-    - `/hooks` - Custom hooks for Web3 and contract interactions
-    - `/contracts` - Contract ABIs and addresses
-    - `/styles` - CSS files for styling the game
+This PoC demonstrates the core gameplay loop of our flagship game, **Catalyst**, through a **Web Application interface**.
 
-## Features
+## 2. PoC Scope & Objectives
 
-### Mock Implementation
+The primary objectives of this PoC are to:
 
-- Works locally without blockchain interactions for faster development and testing
-- Complete game mechanics where players make decisions independently
-- Results are revealed only after both players have committed to their choices
-- Simulated wallet connection and NST token staking
-- Full 5-round gameplay with scoring system
+* Demonstrate the core Iterated Prisoner's Dilemma (IPD) game mechanics between a human player and an AI opponent (MrsBeauty) via a web interface.
+* Simulate economic stakes ($NST) and track player balances within the web app.
+* Implement basic AI strategies for MrsBeauty.
+* Log game interactions (choices, payoffs, AI strategy) to showcase the *type* of behavioral data Nostra Labs aims to generate.
+* Provide an engaging and understandable initial player experience on the web.
 
-### Web3 Implementation
+This PoC focuses on off-chain logic and simulated tokens to rapidly prototype the core interaction. Full Web3 integration (smart contracts, on-chain staking, wallet integration) and advanced adaptive AI are part of our subsequent MVP roadmap.
 
-- Real blockchain interactions using the Catalyst network
-- Connection to MetaMask wallet
-- NST token balance checking and staking
-- Game contract interactions for making moves and submitting results
+## 3. Key Features Demonstrated
 
-## Running the Application
+* **Web Application Interface:** Players interact with the game via buttons and displays in a web browser.
+* **1-vs-1 Gameplay:** Human player against an AI host ("MrsBeauty").
+* **Iterated Prisoner's Dilemma (IPD):** A 5-round game where players choose to "Cooperate" or "Defect" each round.
+* **Simulated Stakes & Payoffs:**
+    * Initial Stake: **15 $NST** (simulated).
+    * Payoff Matrix: **T=4, R=3, P=-1, S=-3**
+        * T (Temptation - Defect while opponent Cooperates): You +4 $NST, AI -3 $NST
+        * R (Reward - Both Cooperate): You +3 $NST, AI +3 $NST
+        * P (Punishment - Both Defect): You -1 $NST, AI -1 $NST
+        * S (Sucker - Cooperate while opponent Defects): You -3 $NST, AI +4 $NST
+* **Basic AI Strategies:** MrsBeauty randomly uses one of several predefined strategies for each game (e.g., Tit For Tat, Always Cooperate, Always Defect).
+* **Game State Tracking:** The web application manages and displays the game state (round number, player/AI moves, balance, game log).
+* **Data Logging:** Round-by-round interactions, including player choices, AI choices, AI strategy used, payoffs, and player balance, are logged (simulated as console output or simple file for PoC) – representing the raw behavioral data output.
+* **Basic Player Stats:** (If implemented in PoC) Tracking of games played, wins/losses, etc.
 
-### Prerequisites
+## 4. How to Interact / What it Demonstrates
 
-- Node.js (v14 or higher)
-- npm or yarn
+This PoC is a Web Application. Interaction involves:
+1.  Opening the web application in a browser.
+2.  Connecting a wallet (simulated or real, depending on PoC stage).
+3.  Minting test $NST (if applicable for PoC).
+4.  Clicking buttons to "Stake $NST" and "Start Game".
+5.  Making "Cooperate" or "Defect" choices via on-screen buttons.
+6.  Observing MrsBeauty's responses in the chat interface and game outcomes in the game log/status areas.
 
-### Installation
+The PoC demonstrates:
+* The feasibility of the core game loop within a web interface.
+* The engagement potential of the IPD with an AI persona and visual feedback.
+* The *type* of granular behavioral data that can be captured from these interactions, forming the basis of our value proposition for researchers and Web3 projects.
 
-1. Clone this repository
-2. Navigate to the web directory:
-```bash
-cd web
-npm install
-```
+## 5. Value Proposition (Demonstrated by PoC)
 
-3. Start the development server:
-```bash
-npm run dev
-```
+This PoC hints at our core value:
+* **For Researchers:** Provides a glimpse into how Nostra Labs can generate unique, incentivized human behavioral data in strategic settings, suitable for studying cooperation, trust, risk, and human-AI interaction.
+* **For Web3 Builders:** Shows a mechanism for testing how users might interact with systems under different incentive structures, laying the groundwork for future simulations of tokenomics or governance.
 
-4. Open your browser and navigate to the URL shown in the terminal (typically http://localhost:5173 or similar)
+## 6. Future Goals (Beyond PoC)
 
-### Using the Mock Implementation
+This PoC is the first step. Our roadmap includes:
+* Full Web3 integration (smart contracts for on-chain staking and potentially game logic, real wallet integration).
+* Implementing advanced adaptive AI for MrsBeauty and other AI agents (The Oracle, Curator, Treasurer).
+* Expanding game modes (PvP, multi-player dilemmas, other game theory scenarios).
+* Building out the data analytics pipeline and researcher access portal.
+* Enhancing the UI/UX of the Web Application.
 
-1. When the app loads, you'll see the Prisoner's Dilemma game interface
-2. Click the "Connect Wallet" button to simulate wallet connection
-3. After connecting, click "Stake 15 NST" to start the game
-4. For each round, choose either "Cooperate" or "Defect"
-5. After submitting your move, the AI opponent's move will be revealed
-6. Play through all 5 rounds to see the final score
 
-### Game Rules
-
-- Both players choose to either Cooperate (🟢) or Defect (🔴) each round
-- Payoffs for each round:
-  - Both Cooperate: +2 NST each
-  - You Cooperate, AI Defects: -3 NST you, +4 NST AI
-  - You Defect, AI Cooperates: +4 NST you, -3 NST AI
-  - Both Defect: -1 NST each
-- The game consists of 5 rounds
-- The player with the highest total score at the end wins
-
-## Deploying to GitHub
-
-To share this project on GitHub:
-
-1. Create a new repository on GitHub
-2. Push the essential files:
-
-```bash
-# Initialize git repository (if not already done)
-git init
-
-# Add essential files
-git add web/src/components/PrisonersDilemmaGame.tsx
-git add web/src/hooks/useMockCatalystContract.js
-git add web/src/App.tsx
-git add web/src/main.tsx
-git add web/src/styles/
-git add web/index.html
-git add web/package.json
-git add web/vite.config.js
-git add README.md
-
-# Commit changes
-git commit -m "Add Prisoner's Dilemma mock implementation"
-
-# Add remote repository
-git remote add origin https://github.com/yourusername/catalyst-prisoners-dilemma.git
-
-# Push to GitHub
-git push -u origin main
-```
-
-Replace `yourusername` with your actual GitHub username and `catalyst-prisoners-dilemma` with your repository name.
-
-### Running the Telegram Bot
-
-1. Make sure you have Python 3.7+ installed
-2. Install required packages:
-```bash
-pip install python-telegram-bot
-```
-
-3. Run the bot:
-```bash
-python MrsBeautyBot.py
-```
-
-## Game Rules
-
-The Prisoner's Dilemma game is played with the following payoff matrix:
-
-- Both cooperate: +2 NST each
-- Player cooperates, AI defects: Player -3 NST, AI +4 NST
-- Player defects, AI cooperates: Player +4 NST, AI -3 NST
-- Both defect: -1 NST each
-
-## Development
-
-This project is designed to be a prototype for testing game mechanics and UI/UX before implementing blockchain functionality.
-- **Phase**: Prototype v1 (Month 1-2)  
-- **Goals**: Validate game mechanics, ensure blockchain/AI integration, and log data for DeSci research.  
-- **Setup**: Install Node.js, npm, and Hardhat. Run `npm install` and `npx hardhat compile` for contracts.  
-- **Next**: See `docs/game-mechanics.md` for details.
+This README aims to give anyone (including ourselves, or potential early reviewers) a clear understanding of what this current Web App PoC achieves and where it fits into our larger vision.
